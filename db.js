@@ -22,7 +22,10 @@ const prodConfig = process.env.DATABASE_URL
 module.exports = knex({
   client: 'postgres',
   connection: {
-    connectionString: prodConfig
+    connectionString: prodConfig,
+    ssl: {
+      rejectUnauthorized: false
+    }
   }
 })
 
