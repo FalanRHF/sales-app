@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   db:
     image: postgres
@@ -22,25 +21,7 @@ services:
       PGADMIN_DEFAULT_PASSWORD: pgadmin
     volumes:
       - pgadmin-data:/var/lib/pgadmin
-  server:
-    build: ./server
-    image: node-server
-    container_name: node-server-container
-    ports:
-      - 5000:5000
-    volumes:
-      - ./server:/server
-  web:
-    build: ./web
-    image: react-web
-    container_name: react-web-container
-    ports:
-      - 3000:80
-    volumes:
-      - ./web:/web
 
 volumes:
   postgres-data:
   pgadmin-data:
-
-

@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM node:16.15.1-alpine
+FROM node:16.15.1-alpine as build
 
 WORKDIR /web
 
@@ -10,6 +10,7 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
 
-CMD [ "npm", "start" ]
+FROM nginx
+COPY --from=build /web/build /usr/share/nginx/html
