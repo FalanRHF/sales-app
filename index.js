@@ -26,13 +26,23 @@ app.get('/users', async (req, res) => {
 })
 
 app.get('/products', async (req, res) => {
-  const products = await db.select().from('products')
-  res.json(products)
+  try {
+    console.log("original URL:", req.originalUrl)
+    const products = await db.select().from('products')
+    res.json(products)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 app.get('/transactions', async (req, res) => {
-  const transactions = await db.select().from('transactions').orderBy('trxn_id', 'desc')
-  res.json(transactions)
+  try {
+    console.log("original URL:", req.originalUrl)
+    const transactions = await db.select().from('transactions').orderBy('trxn_id', 'desc')
+    res.json(transactions)
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 app.post('/checkout/orders', async (req, res) => {
