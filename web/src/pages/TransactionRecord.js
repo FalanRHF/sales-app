@@ -21,7 +21,7 @@ const TransactionRecord = () => {
   const getTransactions = async () => {
     console.log("getTransactions()")
     try {
-      const res = await axios.get('http://localhost:5000/transactions')
+      const res = await axios.get('/transactions')
       console.log(res.data)
       setTransactions(res.data)
     } catch (error) {
@@ -33,7 +33,7 @@ const TransactionRecord = () => {
     console.log("onPostTransactions")
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.put('http://localhost:5000/checkout/method', {
+        const res = await axios.put('/checkout/method', {
           "order_id": orderID,
           "payment_method": newValue
         })
@@ -66,7 +66,7 @@ const TransactionRecord = () => {
 
   const onRefund = async (trxn_id) => {
     try {
-      const res = await axios.put('http://localhost:5000/refund', {
+      const res = await axios.put('/refund', {
         "trxn_id": trxn_id
       })
       getTransactions()

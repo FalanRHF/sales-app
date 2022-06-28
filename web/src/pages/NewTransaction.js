@@ -63,7 +63,7 @@ const NewTransaction = () => {
 
   const getProductsArray = async () => {
     try {
-      const products = await axios.get(`http://localhost:5000/products`)
+      const products = await axios.get(`/products`)
       setProducts(products.data)
     } catch (error) {
       console.log(error)
@@ -87,7 +87,7 @@ const NewTransaction = () => {
     console.log("onPostOrders")
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.post('http://localhost:5000/checkout/orders', {
+        const res = await axios.post('/checkout/orders', {
           "tax": tax,
           "sv_charge": sv_charge,
           "total_amt": grandTotal
@@ -104,7 +104,7 @@ const NewTransaction = () => {
     console.log("onPostOrderItems")
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.post('http://localhost:5000/checkout/orderitems', {
+        const res = await axios.post('/checkout/orderitems', {
           "cart": cart,
           "order_id": order_id
         })
@@ -119,7 +119,7 @@ const NewTransaction = () => {
     console.log("onPostTransactions")
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.post('http://localhost:5000/checkout/transactions', {
+        const res = await axios.post('/checkout/transactions', {
           "order_id": order_id,
           "total_amt": grandTotal
         })
@@ -134,7 +134,7 @@ const NewTransaction = () => {
     console.log("onPostTransactions")
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.put('http://localhost:5000/checkout/method', {
+        const res = await axios.put('/checkout/method', {
           "order_id": orderID,
           "payment_method": newValue
         })
