@@ -22,12 +22,7 @@ const prodConfig = process.env.DATABASE_URL
 module.exports = knex({
   client: 'postgres',
   connection: {
-    connectionString: process.env.NODE_ENV === "production" ? devConfig : prodConfig
+    connectionString: prodConfig
   }
 })
-
-// module.exports = knex({
-//   client: 'postgres',
-//   connectionString: process.env.NODE_ENV === "production" ? devConfig : prodConfig
-// })
 
